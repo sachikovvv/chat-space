@@ -1,0 +1,51 @@
+-# 全画面
+.body
+-# 画面左側
+.wrapper
+  .side-header__box
+    %p.side-header__box__user-name
+      さちこ
+    %ul.side-header__box__menu
+      %li.side-header__box__menu__new-group
+        =fa_icon'edit'
+      %li.side-header__box__menu__edit-user
+        =fa_icon'cog'
+  .groups
+    .group
+      %p.group__group-name
+        TechExpert
+      %p.group__latest-message
+        おはよう
+  
+  -# 画面右側
+.chat-main
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__current-group
+        TechExpert 
+      %ul.main-header__left-box__member-list
+        Member:
+        %li.main-header__left-box__member-list__member
+          さちこ
+      
+    .main-header__edit-btn
+      Edit
+
+  .messages
+    .message 
+      .message__upper-info
+        .message__upper-info__talker 
+          さちこ
+        .message__upper-info__date
+          2019/06/02(Sun)16:19:42
+        .message__text
+          おはよう
+.form
+  
+  %input.form__text
+  .form__mask
+    %label.form__mask__image
+      =fa_icon 'picture-o', class: 'icon'
+      %input.form__mask__image__icon{type: 'file'}
+    %input.hidden{type: 'file'}
+  %input.form__submit{type: 'submit', value: 'Send'}
