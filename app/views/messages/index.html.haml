@@ -4,18 +4,22 @@
 .wrapper
   .side-header__box
     %p.side-header__box__user-name
-      さちこ
+      = current_user.name
     %ul.side-header__box__menu
       %li.side-header__box__menu__new-group
-        =fa_icon'edit'
+        = link_to new_group_path do
+          = fa_icon 'pencil-square-o', class: 'icon'
       %li.side-header__box__menu__edit-user
-        =fa_icon'cog'
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cog', class: 'icon'
   .groups
     .group
-      %p.group__group-name
-        TechExpert
-      %p.group__latest-message
-        おはよう
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          %p.group__group-name
+            = group.name
+          %p.group__latest-message
+            = group.show_last_message
   
   -# 画面右側
 .chat-main
@@ -32,20 +36,20 @@
       Edit
 
   .messages
+    = render @messages
     .message 
       .message__upper-info
         .message__upper-info__talker 
           さちこ
         .message__upper-info__date
           2019/06/02(Sun)16:19:42
-        .message__text
+        .lower-message
           おはよう
-.form
-  
-  %input.form__text
-  .form__mask
-    %label.form__mask__image
-      =fa_icon 'picture-o', class: 'icon'
-      %input.form__mask__image__icon{type: 'file'}
-    %input.hidden{type: 'file'}
-  %input.form__submit{type: 'submit', value: 'Send'}
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type cretaa message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
