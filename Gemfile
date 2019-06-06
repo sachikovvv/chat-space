@@ -63,7 +63,13 @@ gem "font-awesome-rails"
 
 gem "devise"
 
+gem "pry-rails"
+
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem "pry-rails"
+group :test, :development do 
+  gem 'capybara'
+end
+
+gem 'jquery-rails'
