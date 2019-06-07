@@ -24,7 +24,6 @@ $(document).on('turbolinks:load', function(){
     e.preventDefault();
     var message = new FormData(this);
     var url = $(this).attr('action')
-    // console.log(this)
     $.ajax({  
       url: url,
       type: 'POST',
@@ -36,7 +35,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('#message_content').val('');
+      $('#message_content').reset;
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight},'fast');
     })
     .fail(function(data){
