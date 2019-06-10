@@ -29,14 +29,18 @@
         display: flex;
         align-items: center;
         margin-left: 20px;
+        color: $white;
       }
 
       &__menu{
         display: flex;
         margin-right: 20px;
+        color: $white;
       }
+      
    }
   .groups{
+    overflow: scroll;
     display: inline-block;
     height: calc(100vh - 100px);
     background-color: #2f3e51;
@@ -76,7 +80,7 @@
     &__left-box{
       float: left;
       &__current-group{
-        font-color: #333;
+        color: #333;
         margin-top: 35px;
         font-size: 20px;
         display: flex;
@@ -128,6 +132,7 @@
         margin-top: 10px;
         font-size: 14px;
         font-color: $black;
+        margin-bottom: 50px;
       }
 
       .form {
@@ -140,11 +145,10 @@
         
         &new_message {
           background-color: #fff;
-          height: 50px;
           position: relative;
           padding: 20px 40px 30px 10px;
           height: 100px;
-          width: 100%;
+          width: 80%;
         }
         &__mask {
           background-color: #fff;

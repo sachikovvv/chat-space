@@ -33,7 +33,8 @@
           さちこ
       
     .main-header__edit-btn
-      Edit
+      = link_to edit_group_path(@group) do
+        Edit
 
   .messages
     = render @messages
