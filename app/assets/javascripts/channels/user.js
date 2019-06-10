@@ -51,7 +51,7 @@ $(function(){
     alert('ユーザー検索に失敗しました');
   })
 });
-$(function(){
+
   $(document).on('click', '.user-search-add', function() {
     var name = $(this).data("user-name");
     var user_id = $(this).data("user-id");
@@ -62,6 +62,5 @@ $(function(){
       $(document).on("click", '.user-search-remove', function() {
     $(this).parent().remove();
   });
-});
 });
 });
