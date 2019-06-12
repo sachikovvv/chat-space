@@ -26,7 +26,7 @@
   .main-header
     .main-header__left-box
       %h2.main-header__left-box__current-group
-        TechExpert 
+        = @group.name
       %ul.main-header__left-box__member-list
         Member:
         %li.main-header__left-box__member-list__member
@@ -38,17 +38,10 @@
 
   .messages
     = render @messages
-    .message 
-      .message__upper-info
-        .message__upper-info__talker 
-          さちこ
-        .message__upper-info__date
-          2019/06/02(Sun)16:19:42
-        .lower-message
-          おはよう
+    
   .form
     = form_for [@group, @message] do |f|
-      = f.text_field :content, class: 'new_message', placeholder: 'type cretaa message'
+      = f.text_field :content, class: 'new_message', placeholder: 'type cretaa message', id: "new_message"
       .form__mask
         = f.label :image, class: 'form__mask__image' do
           = fa_icon 'picture-o', class: 'icon'
