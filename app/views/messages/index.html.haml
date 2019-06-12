@@ -1,49 +1,17 @@
--# 全画面
-.body
--# 画面左側
+.flash-box
 .wrapper
-  .side-header__box
-    %p.side-header__box__user-name
-      = current_user.name
-    %ul.side-header__box__menu
-      %li.side-header__box__menu__new-group
-        = link_to new_group_path do
-          = fa_icon 'pencil-square-o', class: 'icon'
-      %li.side-header__box__menu__edit-user
-        = link_to edit_user_path(current_user) do
-          = fa_icon 'cog', class: 'icon'
-  .groups
-    .group
-      - current_user.groups.each do |group|
-        = link_to group_messages_path(group) do
-          %p.group__group-name
-            = group.name
-          %p.group__latest-message
-            = group.show_last_message
-  
-  -# 画面右側
-.chat-main
-  .main-header
-    .main-header__left-box
-      %h2.main-header__left-box__current-group
-        = @group.name
-      %ul.main-header__left-box__member-list
-        Member:
-        %li.main-header__left-box__member-list__member
-          さちこ
-      
-    .main-header__edit-btn
-      = link_to edit_group_path(@group) do
-        Edit
+  .side-bar
+    = render partial: "messages/side_bar"
+  .chat-main
+    = render partial: "messages/main_header"
+    .messages
+      = render partial: 'message', collection: @messages  
 
-  .messages
-    = render @messages
-    
-.form
-  = form_for [@group, @message] do |f|
-    = f.text_field :content, class: 'form__message', placeholder: 'type a message', id: "new_message"
-    .form__mask
-      = f.label :image, class: 'form__mask__image' do
-        = fa_icon 'picture-o', class: 'icon'
-        = f.file_field :image, class: 'hidden'
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message', id: 'new_message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
         = f.submit 'Send', class: 'form__submit'
