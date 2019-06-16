@@ -5,7 +5,7 @@
   width: 300px;
   .header {
     background-color: $side_blue_dark;
-    height: 100px;
+    height: 117px;
     line-height: 100px;
     padding: 0 20px;
     &__name {
@@ -27,8 +27,10 @@
   }
 
   .groups {
+    width: 300px;
+    overflow: scroll;
     background-color: $side_blue_light;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 117px);
     padding: 0 20px;
     .group {
       box-sizing: border-box;
